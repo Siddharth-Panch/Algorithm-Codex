@@ -1,3 +1,4 @@
+from copy import deepcopy
 import unittest,random
 from Insertion_Sort import insertion_sort
 
@@ -7,8 +8,9 @@ class SortTest(unittest.TestCase):
         for _ in range(100):
             length=random.randint(0,10**4)
             z=random.choices(pop,k=length)
-            fn(z,0,length-1)
-            self.assertEqual(z,sorted(z))
+            y=deepcopy(z)
+            fn(y,0,length-1)
+            self.assertEqual(sorted(z),y)
 
 if __name__ == '__main__':
     unittest.main()
